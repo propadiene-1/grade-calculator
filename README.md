@@ -1,2 +1,2 @@
 # Grade Calculator
-for college students!
+type xi
