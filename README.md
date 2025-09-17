@@ -1,2 +1,2 @@
 # Grade Calculator
-type xi
+type shi
