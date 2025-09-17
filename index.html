@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  </head>
+  <title>Grade Calculator</title>
+  <body>
+    <h1>Grade Calculator</h1>
+
+    <!-- Create/select course -->
+    <div>
+      <input id="courseName" placeholder="Course name">
+      <button id="createCourse">Create</button>
+      <option value="-1">No courses</option>
+      <select id="courseSelect"></select>
+      <button id="deleteCourse">Delete</button>
+    </div>
+
+    <!-- Categories -->
+    <h3>Categories</h3>
+    <div>
+      <input id="catName" placeholder="Category">
+      <input id="catWeight" type="number" step="0.01" placeholder="Weight (e.g. 0.4 or 40)">
+      <button id="addCategory">Add/Update</button>
+      <input id="delCatName" placeholder="Delete category (exact name)">
+      <button id="delCategory">Delete</button>
+    </div>
+    <pre id="weightsView"></pre>
+
+    <!-- Assessments -->
+    <h3>Assessments</h3>
+    <div>
+      <input id="asmName" placeholder="Name">
+      <input id="asmCat" placeholder="Category">
+      <input id="asmEarned" type="number" step="0.01" placeholder="Earned">
+      <input id="asmPossible" type="number" step="0.01" placeholder="Possible">
+      <button id="addAsm">Add</button>
+    </div>
+    <pre id="asmView"></pre>
+
+    <!-- Grade -->
+    <h3>Total Grade</h3>
+    <pre id="gradeView"></pre>
+
+    <!-- Backup -->
+    <h3>Backup</h3>
+    <button id="exportBtn">Export JSON</button>
+    <input id="importFile" type="file" accept="application/json">
+
+    <!-- JS modules -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

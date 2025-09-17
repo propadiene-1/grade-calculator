@@ -1,0 +1,75 @@
+ @import "tailwindcss";
+
+ body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        text-align: center;
+        color-scheme: light dark;
+        min-width: 320px;
+        min-height: 100vh;
+    }
+
+    h1 {
+        color: rgb(225, 16, 120);
+        font-size: 3.2em;
+        line-height: 1.1;
+        font-family: nunito;
+    }
+
+    h3{
+        color: rgb(225, 16, 120);
+        font-size: 1.6em;
+        font-family: nunito;
+    }
+
+    button{
+        color: rgb(35, 33, 63);
+        border-radius: 12px;
+        border: 2px;
+        border-color: black;
+        padding: 0.5em 0.5em;
+        font-size: 1em;
+        background-color: white;
+    }
+
+    button:hover{
+        border-color: #f32a88;
+        background: linear-gradient(to bottom, #f32a88,#f358a0);
+        color: white;
+        box-shadow: 0px 1px 2px #a21e5b
+    }
+
+    ::placeholder {
+        color: #d3a0c0;
+    }
+    
+    .nunito {
+        font-family: "Nunito", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    input{
+        background-color: #fcf2f8;
+        padding: 6px 6px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        color: rgb(0, 0, 0); /* rgb(184, 9, 97);*/
+    }
+    
+    #courseSelect {
+        width: 240px;                 
+        padding: 6px 6px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: linear-gradient(to bottom, #f32a88,#f358a0);
+        color: #111;
+        text-align: center;
+        font: inherit;
+
+        /*hide native arrow cross-browser*/
+        appearance: none;
+        -webkit-appearance: none;  /*Safari*/
+    }

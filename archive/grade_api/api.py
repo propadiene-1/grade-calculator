@@ -1,17 +1,54 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, status, Body, Query
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from typing import Dict, List, Optional
+from uuid import uuid4, UUID
+from itertools import count
 from calculator import Course
 
-app = FastAPI()
-courses = {}
+### ----- APP + CORS -----
+app = FastAPI(title="Grade Calculator API", version="0.2")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # tighten in prod
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-#course class with Pydantic
+### ----- STORING COURSES -----
+courses: Dict[int, "CourseState"] = {}
+next_id = count(start=1)
+
+### ----- CLASSES -----
 class CourseIn(BaseModel):
     name: str
-    weights: dict
-    assessments: list = []
+    weights: Dict[str, float] = Field(default_factory=dict)
+    assessments: List[AssessmentIn] = Field(default_factory=list)
 
-### --- COURSE CLASS ---
+class CourseOut(BaseModel):
+    id: int
+    name: str
+    weights: Dict[str, float]
+    assessments: List[Assessment]
+
+class AssessmentIn(BaseModel):
+    name: str
+    category: str
+    earned: float = Field(ge=0)
+    possible: float = Field(ge=0)
+
+class Assessment(AssessmentIn):
+    id: UUID = Field(default_factory=uuid4)
+
+class GradeOut(BaseModel):
+    total_grade: Optional[float]  # None if no weighted data
+
+class CategoryPctOut(BaseModel):
+    category: str
+    percentage: Optional[float]
+
+### ----- COURSE CLASS -----
 
 @app.post("/courses/{cid}")
 def add_course(item: CourseIn):
@@ -50,7 +87,7 @@ def delete_course(cid: int):
     del courses[cid]
     return {"message": f"Course {cid} deleted successfully."}
 
-### --- CATEGORIES ---
+### ----- CATEGORIES -----
 
 @app.post("/courses/{cid}/category/{cat}")
 def add_category(cid: int, cat: str, w: int):
@@ -82,7 +119,7 @@ def delete_cat(cid: int, cat: str):
     del courses[cid].weights[cat]
     return {"message": f"Category {cat} deleted from {courses[cid].name}."}
 
-### --- ASSESSMENTS ---
+### ----- ASSESSMENTS -----
 
 @app.post("/courses/{cid}/assessment")
 def add_assessment(cid: int, item: dict):
