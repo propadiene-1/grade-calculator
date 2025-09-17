@@ -1,6 +1,6 @@
 # Grade Calculator
 
-## Quick Start
+## How to Use
 
 Clone repo and run this!
 
