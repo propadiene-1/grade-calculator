@@ -3,6 +3,7 @@
 ## Quick Start
 
 Clone repo and run this!
-'''bash
+
+```bash
 python3 -m http.server 5173
-'''
+```
