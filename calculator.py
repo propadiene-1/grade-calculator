@@ -4,8 +4,8 @@ class Course ():
         self.weights = weights
         self.assessments = assessments
     
-    def add_grade(self, name, category, earned, possible):
-        self.assessments.append({"name": name, "category": category, "earned": float(earned), "possible": float(possible)})
+    def add_assessment(self, name, category, earned, possible):
+        self.assessments.append((name, {"name": name, "category": category, "earned": float(earned), "possible": float(possible)}))
         return 
     
     def add_category(self, category, weight):
@@ -19,9 +19,9 @@ class Course ():
         total_earned = 0
         total_possible = 0
         for assessment in self.assessments:
-            if assessment["category"] == category:
-                total_earned += assessment["earned"]
-                total_possible += assessment["possible"]
+            if assessment[1]["category"] == category:
+                total_earned += assessment[1]["earned"]
+                total_possible += assessment[1]["possible"]
         if total_possible == 0:
             return None
         return round((total_earned / total_possible) * 100, 2)
