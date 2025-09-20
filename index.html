@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
   <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
   </head>
   <title>Grade Calculator</title>
   <body>
@@ -21,8 +22,13 @@
       <button id="deleteCourse">Delete</button>
     </div>
 
+
+    <!-- <h3>Grades for id="CourseName"</h3>
+    <script>
+      document.getElementById("CourseName").textContent = siteName;
+    </script> -->
     <!-- Categories -->
-    <h3>Categories</h3>
+    <!-- <h3>Categories</h3>
     <div>
       <input id="catName" placeholder="Category">
       <input id="catWeight" type="number" step="0.01" placeholder="Weight (e.g. 0.4 or 40)">
@@ -32,19 +38,85 @@
     </div>
     <pre id="weightsView"></pre>
 
-    <!-- Assessments -->
-    <h3>Assessments</h3>
-    <div>
+    <-- Assessments -->
+    <!-- <h3>Assessments</h3> -->
+    <!-- <div>
       <input id="asmName" placeholder="Name">
       <input id="asmCat" placeholder="Category">
       <input id="asmEarned" type="number" step="0.01" placeholder="Earned">
       <input id="asmPossible" type="number" step="0.01" placeholder="Possible">
       <button id="addAsm">Add</button>
+      <input id ="asmView" type="">
     </div>
-    <pre id="asmView"></pre>
+    <pre id="asmView"></pre> -->
+
+    <h3>Course Grade</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Weight</th>
+          <th>Earned</th>
+          <th>Possible</th>
+          <th>Category Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input id="catName" placeholder="Category Name"></td>
+          <td><input id="catWeight" placeholder="Category Weight"></td>
+          <td><input placeholder="Points Earned"></td>
+          <td><input placeholder="Points Possible"></td>
+          <td>Category Percentage</td>
+        </tr>
+        <tr>
+          <td><input id="catName" placeholder="Category Name"></td>
+          <td><input id="catWeight" placeholder="Category Weight"></td>
+          <td><input placeholder="Points Earned"></td>
+          <td><input placeholder="Points Possible"></td>
+          <td>Category Percentage</td>
+        </tr>
+        <tr>
+          <td><input id="catName" placeholder="Category Name"></td>
+          <td><input id="catWeight" placeholder="Category Weight"></td>
+          <td><input placeholder="Points Earned"></td>
+          <td><input placeholder="Points Possible"></td>
+          <td>Category Percentage</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Category Assignments</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Assignment</th>
+          <th>Points Earned</th>
+          <th>Points Possible</th>
+          <th>Assignment Percentage</th>
+          <th>Total Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input id="asmName" placeholder="Assignment Name"></td>
+          <td><input id="asmEarned" placeholder="Points Earned"></td>
+          <td><input id="asmPossible" placeholder="Points Possible"></td>
+          <td>Assignment Percentage</td>
+          <td>Category Percentage</td>
+        </tr>
+        <tr>
+          <td><input id="asmName" placeholder="Assignment Name"></td>
+          <td><input id="asmEarned" placeholder="Points Earned"></td>
+          <td><input id="asmPossible" placeholder="Points Possible"></td>
+          <td>Assignment Percentage</td>
+          <td>Category Percentage</td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- Grade -->
-    <h3>Total Grade</h3>
+    <h3>Total Grade: [Grade]</h3>
     <pre id="gradeView"></pre>
 
     <!-- Backup -->

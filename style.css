@@ -73,3 +73,40 @@
         appearance: none;
         -webkit-appearance: none;  /*Safari*/
     }
+
+    .weightsView{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+    }
+
+    .asmView{
+        font-size: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .gradesView{
+        font-size: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    table, td {
+        margin: auto;
+        /* border: 1px solid black; */
+        border-collapse: collapse;
+        padding: 8px;
+        border-radius: 8px;
+        /*font-family: nunito;*/
+    }
+    th {
+        background-color: #f358a0;
+        color: white;
+        text-align: left;
+        padding: 8px;
+        border-collapse: collapse;
+        border-radius: 8px;
+        font-family: nunito;
+        font-size: 1.1em;
+
+        /*font-family: nunito;*/
+    }
+    /*linear-gradient(to bottom, #f32a88,#f358a0);*/

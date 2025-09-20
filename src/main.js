@@ -30,6 +30,9 @@ const asmView = document.getElementById("asmView");
 
 const gradeView = document.getElementById("gradeView");
 
+const courseTable = document.createElement('courseTable');
+const courseTableBody = document.createElement('courseTableBody');
+
 /*
 const exportBtn = document.getElementById("exportBtn");
 const importFile = document.getElementById("importFile");
@@ -63,24 +66,35 @@ function renderSelect() {
 }
 
 function renderCourse() {
-  if (idx < 0) {
-    weightsView.textContent = "";
-    asmView.textContent = "";
-    gradeView.textContent = "";
-    return;
-  }
-  const c = courses[idx];
-  const linesW = Object.entries(c.weights).map(([k, v]) => {
-    const pct = c.categoryPercentage(k);
-    return `${k}: weight=${v}  category%=${pct == null ? "n/a" : pct.toFixed(2) + "%"}`;
-  });
-  weightsView.textContent = linesW.join("\n") || "(no categories)";
+    for (let i = 0; i < 3; i++) {
+        const row = document.createElement('tr'); // Create a new row
 
-  const linesA = c.assessments.map(a => `${a[0]} | ${a[1].category} | ${a[1].earned}/${a[1].possible}`);
-  asmView.textContent = linesA.join("\n") || "(no assessments)";
+        for (let j = 0; j < 2; j++) {
+            const cell = document.createElement('td'); // Create a new cell
+            const cellText = document.createTextNode(`Cell ${i},${j}`); // Create text content
+            cell.appendChild(cellText); // Add text to the cell
+            row.appendChild(cell); // Add cell to the row
+        }
+        courseTableBody.appendChild(row); // Add row to the table body
+    }
+//   if (idx < 0) {
+//     weightsView.textContent = "";
+//     asmView.textContent = "";
+//     gradeView.textContent = "";
+//     return;
+//   }
+//   const c = courses[idx];
+//   const linesW = Object.entries(c.weights).map(([k, v]) => {
+//     const pct = c.categoryPercentage(k);
+//     return `${k}: weight=${v}  category%=${pct == null ? "n/a" : pct.toFixed(2) + "%"}`;
+//   });
+//   weightsView.textContent = linesW.join("\n") || "(no categories)";
 
-  const total = c.totalGrade();
-  gradeView.textContent = total == null ? "(no total yet)" : `${total.toFixed(2)}%`;
+//   const linesA = c.assessments.map(a => `${a[0]} | ${a[1].category} | ${a[1].earned}/${a[1].possible}`);
+//   asmView.textContent = linesA.join("\n") || "(no assessments)";
+
+//   const total = c.totalGrade();
+//   gradeView.textContent = total == null ? "(no total yet)" : `${total.toFixed(2)}%`;
 }
 
 // events
