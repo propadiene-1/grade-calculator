@@ -22,6 +22,10 @@
         font-family: nunito;
     }
 
+    .header-container {
+        gap: 200px; /* Adds a 20px gap between all direct children of the container */
+    }
+
     button{
         color: rgb(35, 33, 63);
         border-radius: 12px;

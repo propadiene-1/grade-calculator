@@ -32,6 +32,9 @@ const gradeView = document.getElementById("gradeView");
 
 const courseTable = document.createElement('courseTable');
 const courseTableBody = document.createElement('courseTableBody');
+const saveGrades = document.createElement('saveGrades');
+const catEarned = document.createElement('catEarned');
+const catPossible = document.createElement('catPossible');
 
 /*
 const exportBtn = document.getElementById("exportBtn");
@@ -98,6 +101,14 @@ function renderCourse() {
 }
 
 // events
+
+saveGrades.addEventListener('click',()=> {
+    const catValue = catInput.value;
+    const newSpan = document.createElement('span');
+    newSpan.textContent = catValue;
+    category.replaceChild(newSpan, catInput);
+});
+
 createCourse.onclick = () => { 
   const name = (courseName.value || "").trim();
   if (!name) return;
