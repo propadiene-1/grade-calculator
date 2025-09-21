@@ -17,7 +17,7 @@
     <div>
       <input id="courseName" placeholder="Course name">
       <button id="createCourse">Create</button>
-      <option value="-1">No courses</option>
+      <!-- <option value="-1">No courses</option> -->
       <select id="courseSelect"></select>
       <button id="deleteCourse">Delete</button>
     </div>
@@ -54,7 +54,6 @@
       <h3>Course Grade</h3>
       <button id= "saveGrades">Save Grades</button>
     </header>
-
     <table>
       <thead>
         <tr>
@@ -65,29 +64,7 @@
           <th>Category Percentage</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><input id="catName" placeholder="Category Name"></td>
-          <td><input id="catWeight" placeholder="Category Weight"></td>
-          <td><input placeholder="Points Earned"></td>
-          <td><input placeholder="Points Possible"></td>
-          <td>Category Percentage</td>
-        </tr>
-        <tr>
-          <td id = "category"><input id="catName" placeholder="Category Name"></td>
-          <td><input id="catWeight" placeholder="Category Weight"></td>
-          <td><input placeholder="Points Earned"></td>
-          <td><input placeholder="Points Possible"></td>
-          <td>Category Percentage</td>
-        </tr>
-        <tr>
-          <td><input id="catName" placeholder="Category Name"></td>
-          <td><input id="catWeight" placeholder="Category Weight"></td>
-          <td><input placeholder="Points Earned"></td>
-          <td><input placeholder="Points Possible"></td>
-          <td>Category Percentage</td>
-        </tr>
-      </tbody>
+      <tbody id="courseTableBody"></tbody>
     </table>
 
     <h3>Category Assignments</h3>
