@@ -59,39 +59,53 @@ function renderCourse() {
   if (Object.keys(curr.weights || {}).length === 0) {
     const row = document.createElement('tr'); //construct category row
 
-    const name = document.createElement('td');
+    const nameCell = document.createElement('td');
     var nameInput = document.createElement("input");
     nameInput.type = "text";
-    nameInput.name = "name input";
+    nameInput.name = "categoryName";
     nameInput.id = "nameInput";
+    nameInput.placeholder = "Category Name";
     // const nameText = document.createTextNode("Enter Category"); //i = name
     // name.appendChild(nameText);
-    name.appendChild(nameInput);
-    row.appendChild(name);
+    nameCell.appendChild(nameInput);
+    row.appendChild(nameCell);
 
-    const weight = document.createElement('td'); 
+    const weightCell = document.createElement('td'); 
     //display weight as percentage
-    const weightText = document.createTextNode("Enter Weight");
-    weight.appendChild(weightText);
-    row.appendChild(weight);
+    var weightInput = document.createElement("input");
+    weightInput.type = "number";
+    weightInput.name = "categoryWeight";
+    weightInput.id = "weightInput";
+    weightInput.placeholder = "Category Weight";
+    weightCell.appendChild(weightInput); // add something to convert to % later
+    row.appendChild(weightCell);
 
     //inputs from user
 
-    const earned = document.createElement('td');
-    const earnedText = document.createTextNode("Enter Points Earned");
-    earned.appendChild(earnedText);
-    row.appendChild(earned);
+    const earnedCell = document.createElement('td');
+    var earnedInput = document.createElement("input");
+    earnedInput.type = "number";
+    earnedInput.name = "pointsEarned";
+    earnedInput.id = "earnedInput";
+    earnedInput.placeholder = "Points Earned";
+    earnedCell.appendChild(earnedInput);
+    row.appendChild(earnedCell);
 
-    const possible = document.createElement('td');
-    const possibleText = document.createTextNode("Enter Points Possible");
-    possible.appendChild(possibleText);
-    row.appendChild(possible);
+    const possibleCell = document.createElement('td');
+    var possibleInput = document.createElement("input");
+    possibleInput.type = "number";
+    possibleInput.name = "pointsPossible";
+    possibleInput.id = "possibleInput";
+    possibleInput.placeholder = "Points Possible";
+    possibleCell.appendChild(possibleInput);
+    row.appendChild(possibleCell);
 
     //total percentage
-    const catPercentage = document.createElement('td');
-    const catPercentageText = document.createTextNode("0%");
-    catPercentage.appendChild(catPercentageText);
-    row.appendChild(catPercentage);
+    const catPercentageCell = document.createElement('td');
+    var catPercentageText = document.createElement("text");
+    catPercentageText.textcontent = courses[idx].categoryPercentage(catName); //based on inputted category name
+    catPercentageCell.appendChild(catPercentageText);
+    row.appendChild(catPercentageCell);
 
     courseTableBody.appendChild(row); //add to table body
     return;
