@@ -60,8 +60,13 @@ function renderCourse() {
     const row = document.createElement('tr'); //construct category row
 
     const name = document.createElement('td');
-    const nameText = document.createTextNode("Enter Category"); //i = name
-    name.appendChild(nameText);
+    var nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.name = "name input";
+    nameInput.id = "nameInput";
+    // const nameText = document.createTextNode("Enter Category"); //i = name
+    // name.appendChild(nameText);
+    name.appendChild(nameInput);
     row.appendChild(name);
 
     const weight = document.createElement('td'); 
