@@ -23,6 +23,8 @@ const addAsm = document.getElementById("addAsm");
 
 const saveGrades = document.getElementById('saveGrades');
 
+// add row with add category button lol and add input to dict
+
 function renderSelect() {
   courseSelect.innerHTML = ""; //clear each time
   // NO COURSES
