@@ -179,6 +179,10 @@ saveGrades.addEventListener('click',()=> {
     category.replaceChild(newSpan, catValue);
 });
 
+addCategory.addEventListener('click', ()=> {
+    return;
+})
+
 //create: store in course list
 createCourse.onclick = () => { 
   const name = (courseName.value || "").trim(); // "" if null/no name
