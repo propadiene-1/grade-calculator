@@ -29,15 +29,17 @@
     button{
         color: rgb(35, 33, 63);
         border-radius: 12px;
-        border: 2px;
-        border-color: black;
+        border: 1px;
+        border-color: #f32a88;
+        border-style: solid;
         padding: 0.5em 0.5em;
         font-size: 1em;
         background-color: white;
     }
 
     button:hover{
-        border-color: #f32a88;
+        border-color: #f358a0;
+        border-style: solid;
         background: linear-gradient(to bottom, #f32a88,#f358a0);
         color: white;
         box-shadow: 0px 1px 2px #a21e5b
@@ -58,24 +60,41 @@
         background-color: #fcf2f8;
         padding: 6px 6px;
         border: 1px solid #ddd;
-        border-radius: 5px;
+        border-radius: 7px;
+        border-style: solid;
         font-size: 16px;
         color: rgb(0, 0, 0); /* rgb(184, 9, 97);*/
     }
-    
+
+
+    .hstack{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        justify-content: center;
+    }
+
     #courseSelect {
-        width: 240px;                 
-        padding: 6px 6px;
+        /* size & padding */
+        width: 240px;
+        padding: 6px 2.2rem 6px 10px;  /* room for arrow on right */
+        box-sizing: border-box;
+
+        /* visuals */
         border: 1px solid #ddd;
         border-radius: 10px;
-        background-color: linear-gradient(to bottom, #f32a88,#f358a0);
+        border-style: solid;
+        background: #fff;
+        background-clip: padding-box;   /* Safari bleed fix */
         color: #111;
         text-align: center;
         font: inherit;
+        line-height: 1.2;
 
-        /*hide native arrow cross-browser*/
+        /* remove native chrome */
         appearance: none;
-        -webkit-appearance: none;  /*Safari*/
+        -webkit-appearance: none; /* Safari/Chrome */
+        -moz-appearance: none;    /* Firefox */
     }
 
     .weightsView{
@@ -93,24 +112,28 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    /*change to border-collapse: collapse later and stuff*/
     table, td {
         margin: auto;
-        /* border: 1px solid black; */
-        border-collapse: collapse;
         padding: 8px;
+        border: 1px;
         border-radius: 8px;
+        border-color: #ffff;
+        border-collapse: collapse;
+        border-style: solid;
+        overflow:hidden;
         /*font-family: nunito;*/
     }
+    /* inner grid */
+
     th {
         background-color: #f358a0;
         color: white;
         text-align: left;
         padding: 8px;
-        border-collapse: collapse;
-        border-radius: 8px;
         font-family: nunito;
-        font-size: 1.1em;
+        font-size: 1.1em; 
 
-        /*font-family: nunito;*/
+        /*font-family: nunito;*/ s
     }
     /*linear-gradient(to bottom, #f32a88,#f358a0);*/

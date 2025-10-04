@@ -25,6 +25,8 @@ const saveGrades = document.getElementById('saveGrades');
 
 // add row with add category button lol and add input to dict
 
+//CHANGE COURSE OPTIONS
+
 function renderSelect() {
   courseSelect.innerHTML = ""; //clear each time
   // NO COURSES
@@ -35,15 +37,14 @@ function renderSelect() {
   } 
   // SHOW/rebuild ALL OPTIONS
   else {
-    courses.forEach((c, i) => {
+    courses.forEach((c, i) => { //iterate courses
       const opt = document.createElement("option");
-      opt.value = String(i); opt.textContent = c.name;
+      opt.value = String(i); opt.textContent = c.name; //add titles to options
       courseSelect.appendChild(opt); //build option per course
     });
     if (idx < 0 || idx >= courses.length) idx = 0; //default to first course
     courseSelect.value = String(idx); //set value to index
   }
-  renderCourse();
 }
 
 //display selected course (from dropdown)
@@ -112,19 +113,24 @@ function renderCourse() {
     courseTableBody.appendChild(row); //add to table body
     return;
   }
-  
+
   //DISPLAY ALL COURSES
-  for (const i in curr.weights) {
+  displayCourseTable(curr);
+}
+
+//display table
+function displayCourseTable(course) {
+  for (const cat in course.weights) { //iterate categories
     const row = document.createElement('tr'); //construct category row
 
     const name = document.createElement('td');
-    const nameText = document.createTextNode(i); //i = name
+    const nameText = document.createTextNode(cat); //cat = name
     name.appendChild(nameText);
     row.appendChild(name);
 
     const weight = document.createElement('td'); 
     //display weight as percentage
-    const weightText = document.createTextNode((curr.weights[i] * 100).toFixed(2) + "%");
+    const weightText = document.createTextNode((course.weights[cat] * 100).toFixed(2) + "%");
     weight.appendChild(weightText);
     row.appendChild(weight);
 
@@ -142,44 +148,30 @@ function renderCourse() {
 
     //total percentage
     const catPercentage = document.createElement('td');
-    const catPercentageText = document.createTextNode(curr.categoryPercentage(i));
+    const catPercentageText = document.createTextNode(course.categoryPercentage(cat));
     catPercentage.appendChild(catPercentageText);
     row.appendChild(catPercentage);
 
-    courseTableBody.appendChild(row); //add to table body
+    courseTableBody.append(row);
   }
 }
 
-
-//   if (idx < 0) {
-//     weightsView.textContent = "";
-//     asmView.textContent = "";
-//     gradeView.textContent = "";
-//     return;
-//   }
-//   const c = courses[idx];
-//   const linesW = Object.entries(c.weights).map(([k, v]) => {
-//     const pct = c.categoryPercentage(k);
-//     return `${k}: weight=${v}  category%=${pct == null ? "n/a" : pct.toFixed(2) + "%"}`;
-//   });
-//   weightsView.textContent = linesW.join("\n") || "(no categories)";
-
-//   const linesA = c.assessments.map(a => `${a[0]} | ${a[1].category} | ${a[1].earned}/${a[1].possible}`);
-//   asmView.textContent = linesA.join("\n") || "(no assessments)";
-
-//   const total = c.totalGrade();
-//   gradeView.textContent = total == null ? "(no total yet)" : `${total.toFixed(2)}%`;
-
-// events
+function addRow(course){
+  // render empty row
+}
 
 saveGrades.addEventListener('click',()=> {
     const catValue = catName.value;
     const newSpan = document.createElement('span');
     newSpan.textContent = catValue;
     category.replaceChild(newSpan, catValue);
+    //iterate through all categories and save the value
+    // if no text value, print "no text value was added." at the bottom
+    renderCourse();
 });
 
 addCategory.addEventListener('click', ()=> {
+    // addRow with inputs
     return;
 })
 
@@ -191,6 +183,7 @@ createCourse.onclick = () => {
   courseName.value = ""; //clear input
   idx = courses.length - 1;
   renderSelect();
+  renderCourse();
 };
 
 //delete: remove from course list
@@ -199,6 +192,7 @@ deleteCourse.onclick = () => {
   courses.splice(idx, 1);
   idx = courses.length ? 0 : -1;
   renderSelect();
+  renderCourse();
 };
 
 // addCategory.onclick = () => {
@@ -258,3 +252,24 @@ exportBtn.onclick = () => {
 
 // init
 renderSelect();
+
+//   if (idx < 0) {
+//     weightsView.textContent = "";
+//     asmView.textContent = "";
+//     gradeView.textContent = "";
+//     return;
+//   }
+//   const c = courses[idx];
+//   const linesW = Object.entries(c.weights).map(([k, v]) => {
+//     const pct = c.categoryPercentage(k);
+//     return `${k}: weight=${v}  category%=${pct == null ? "n/a" : pct.toFixed(2) + "%"}`;
+//   });
+//   weightsView.textContent = linesW.join("\n") || "(no categories)";
+
+//   const linesA = c.assessments.map(a => `${a[0]} | ${a[1].category} | ${a[1].earned}/${a[1].possible}`);
+//   asmView.textContent = linesA.join("\n") || "(no assessments)";
+
+//   const total = c.totalGrade();
+//   gradeView.textContent = total == null ? "(no total yet)" : `${total.toFixed(2)}%`;
+
+// events
